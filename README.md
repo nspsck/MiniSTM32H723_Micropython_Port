@@ -1,6 +1,7 @@
 # MiniSTM32H723_Micropython_Port
 
-This port is a WIP and needs [some tweaks](https://github.com/micropython/micropython/issues/12517) to the official Micropython repo in order to work.
+This port is a WIP and needs some tweaks to the official Micropython repo in order to work.
+- [Required Tweaks](#required-tweaks)
 
 ## Update 09.28.2023
 What works now:
@@ -25,6 +26,8 @@ tho, still some weird issues:
 - Some peripherals may not work.
 
 ## Required Tweaks
+
+Here are [some tweaks](https://github.com/micropython/micropython/issues/12517) that you have to do for the firmware to be built successfully.
 
 And it required some changes to `ports/stm32/system_stm32.c`, please add the following to roughly [line 463](https://github.com/micropython/micropython/blob/dd58be19eef0be304e1b0530fe6e7408ab9b9b84/ports/stm32/system_stm32.c#L463).
 ```c
