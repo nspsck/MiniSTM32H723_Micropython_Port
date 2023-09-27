@@ -24,6 +24,8 @@ tho, still some weird issues:
 - On first connection, the board boots fast, then on resets per reset button, it boots very slow, and the LED1 blinks. This is somehow `MICROPY_HW_ENABLE_RNG`related? Because when I disable it, the boards always takes a long time to boot and when I enabled it, the stated behavior is shown.
 - Some peripherals may not work.
 
+## Required Tweaks
+
 And it required some changes to `ports/stm32/system_stm32.c`, please add the following to roughly [line 463](https://github.com/micropython/micropython/blob/dd58be19eef0be304e1b0530fe6e7408ab9b9b84/ports/stm32/system_stm32.c#L463).
 ```c
     #if defined(MICROPY_HW_RCC_OSPI_CLKSOURCE)
