@@ -2,7 +2,17 @@
 
 This port is a WIP and needs [some tweaks](https://github.com/micropython/micropython/issues/12517) to the official Micropython repo in order to work.
 
-This port uses `D8` and `D9` as `TX` and `RX` to host the REPL, you have to connect these pins to a usb-uart bridge to get to the REPL. The USB does not function right now.
+## Update 09.28.2023
+What works now:
+- USB Serial/Storage
+- USB HID
+- SD Card
+- OSPI Flash
+- ADC, RTC, TIMER, SERVO, SWITCH, LED should work, tho not fully tested.
+- REPL via USB and UART3 (TX:D8, RX:D9)
+
+Known issues:
+- There is a weird issue... If you press the `NSRT` button, the firmware thinks that it is it's first boot, hence it takes too long to boot. But if you are not pressing that button, you are just fine at 99% of the time. And if you do not intend to use SD Card, please disable `MICROPY_HW_ENABLE_SDCARD` by set it's value to `(0)`. This will save you some time on boot and soft-reset.
 
 ## Update 09.27.2023
 The port is working now:
