@@ -23,4 +23,3 @@ MICROPY_SSL_MBEDTLS = 1
 MICROPY_VFS_LFS2 = 1
 
 FROZEN_MANIFEST ?= $(BOARD_DIR)/manifest.py
-MBEDTLS_CONFIG_FILE = '"$(BOARD_DIR)/mbedtls_config_board.h"'

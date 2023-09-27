@@ -9,8 +9,11 @@ MEMORY
     FLASH_APP  (rx) : ORIGIN = 0x08020000, LENGTH = 640K    /* sectors 1-5 */
     FLASH_FS (r)    : ORIGIN = 0x080c0000, LENGTH = 256K    /* sectors 6-7 */
     DTCM (xrw)      : ORIGIN = 0x20000000, LENGTH = 128K    /* Used for FS storage cache */
-    RAM (xrw)       : ORIGIN = 0x24000000, LENGTH = 320K    /* 192K RAM is shared between AXI SRAM and ITCM */
-    RAM_SRAM1 (xrw) : ORIGIN = 0x30000000, LENGTH = 16K     /* SRAM1 */
+    RAM (xrw)       : ORIGIN = 0x24000000, LENGTH = 320K    /* 128K + 192K RAM which is shared between AXI SRAM and ITCM */
+    RAM_SRAM1 (xrw) : ORIGIN = 0x30000000, LENGTH = 16K     /* SRAM1 on D2*/
+    RAM_SRAM2 (xrw) : ORIGIN = 0x30004000, LENGTH = 16K     /* SRAM2 on D2*/
+    RAM_D2 (xrw)    : ORIGIN = 0x30000000, LENGTH = 32K     /* Entire D2 Domain*/
+    RAM_SRAM4 (xrw) : ORIGIN = 0x38000000, LENGTH = 16K     /* SRAM4 on D3*/
 }
 
 /* produce a link error if there is not this amount of RAM for these sections */
@@ -42,5 +45,5 @@ SECTIONS
     .eth_buffers (NOLOAD) : {
         . = ABSOLUTE(0x30000000);
         *eth.o*(.bss.eth_dma)
-    } >RAM_SRAM1
+    } >RAM_D2
 }

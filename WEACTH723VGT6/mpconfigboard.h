@@ -2,7 +2,7 @@
 #define MICROPY_HW_MCU_NAME                 "STM32H723VGT6"
 
 #define MICROPY_HW_ENABLE_RTC               (1)
-#define MICROPY_HW_ENABLE_RNG               (0) // RNG needs proper configuration
+#define MICROPY_HW_ENABLE_RNG               (1) // RNG needs proper configuration
 #define MICROPY_HW_ENABLE_ADC               (1)
 #define MICROPY_HW_ENABLE_DAC               (1)
 #define MICROPY_HW_ENABLE_TIMER             (1)
@@ -20,8 +20,8 @@
 #define MICROPY_HW_ENABLE_INTERNAL_FLASH_STORAGE    (0)
 
 #if !MICROPY_HW_ENABLE_INTERNAL_FLASH_STORAGE
-// QSPI flash for storage
-#define MICROPY_HW_OSPI_PRESCALER           (2) // 100MHz
+// OSPI flash for storage
+#define MICROPY_HW_OSPI_PRESCALER           (2)
 #define MICROPY_HW_OSPIFLASH_SIZE_BITS_LOG2 (26)
 #define MICROPY_HW_SPIFLASH_SIZE_BITS       (64 * 1024 * 1024)
 #define MICROPY_HW_OSPIFLASH_CS             (pin_B6)
@@ -42,35 +42,53 @@ extern struct _spi_bdev_t spi_bdev;
 
 #define MICROPY_BOARD_EARLY_INIT            WEACT_H723ZG_board_early_init
 
-//PLL1 400MHz
+//PLL1 550MHz
 #define MICROPY_HW_CLK_PLLM             (5)
-#define MICROPY_HW_CLK_PLLN             (160)
-#define MICROPY_HW_CLK_PLLP             (2)
+#define MICROPY_HW_CLK_PLLN             (110)
+#define MICROPY_HW_CLK_PLLP             (1)
 #define MICROPY_HW_CLK_PLLQ             (4)
 #define MICROPY_HW_CLK_PLLR             (2)
-#define MICROPY_HW_CLK_PLLVCI           (RCC_PLL1VCIRANGE_1)
+#define MICROPY_HW_CLK_PLLVCI           (RCC_PLL1VCIRANGE_2)
 #define MICROPY_HW_CLK_PLLVCO           (RCC_PLL1VCOWIDE)
 #define MICROPY_HW_CLK_PLLFRAC          (0)
 
-// PLL2 200MHz
+// PLL2 200MHz for OSPI.
 #define MICROPY_HW_CLK_PLL2M            (5)
 #define MICROPY_HW_CLK_PLL2N            (80)
 #define MICROPY_HW_CLK_PLL2P            (2)
 #define MICROPY_HW_CLK_PLL2Q            (2)
 #define MICROPY_HW_CLK_PLL2R            (2)
-#define MICROPY_HW_CLK_PLL2VCI          (RCC_PLL2VCIRANGE_1)
+#define MICROPY_HW_CLK_PLL2VCI          (RCC_PLL2VCIRANGE_2)
 #define MICROPY_HW_CLK_PLL2VCO          (RCC_PLL2VCOWIDE)
 #define MICROPY_HW_CLK_PLL2FRAC         (0)
 
 // PLL3 120MHz
 #define MICROPY_HW_CLK_PLL3M            (5)
-#define MICROPY_HW_CLK_PLL3N            (48)
+#define MICROPY_HW_CLK_PLL3N            (96)
 #define MICROPY_HW_CLK_PLL3P            (2)
 #define MICROPY_HW_CLK_PLL3Q            (5)
 #define MICROPY_HW_CLK_PLL3R            (2)
-#define MICROPY_HW_CLK_PLL3VCI          (RCC_PLL3VCIRANGE_1)
+#define MICROPY_HW_CLK_PLL3VCI          (RCC_PLL3VCIRANGE_2)
 #define MICROPY_HW_CLK_PLL3VCO          (RCC_PLL3VCOWIDE)
 #define MICROPY_HW_CLK_PLL3FRAC         (0)
+
+// Bus clock divider values
+#define MICROPY_HW_CLK_AHB_DIV          (RCC_HCLK_DIV2)
+#define MICROPY_HW_CLK_APB1_DIV         (RCC_APB1_DIV2)
+#define MICROPY_HW_CLK_APB2_DIV         (RCC_APB2_DIV2)
+#define MICROPY_HW_CLK_APB3_DIV         (RCC_APB3_DIV2)
+#define MICROPY_HW_CLK_APB4_DIV         (RCC_APB4_DIV2)
+
+// Peripheral clock sources
+#define MICROPY_HW_RCC_HSI48_STATE      (RCC_HSI48_ON)
+#define MICROPY_HW_RCC_USB_CLKSOURCE    (RCC_USBCLKSOURCE_HSI48)
+#define MICROPY_HW_RCC_RNG_CLKSOURCE    (RCC_RNGCLKSOURCE_HSI48)
+#define MICROPY_HW_RCC_ADC_CLKSOURCE    (RCC_ADCCLKSOURCE_PLL3)
+#define MICROPY_HW_RCC_SDMMC_CLKSOURCE  (RCC_SDMMCCLKSOURCE_PLL)
+#define MICROPY_HW_RCC_FDCAN_CLKSOURCE  (RCC_FDCANCLKSOURCE_PLL)
+// #define MICROPY_HW_RCC_SPI123_CLKSOURCE (RCC_SPI123CLKSOURCE_PLL3)
+// #define MICROPY_HW_RCC_I2C123_CLKSOURCE (RCC_I2C123CLKSOURCE_D2PCLK1)
+#define MICROPY_HW_RCC_OSPI_CLKSOURCE   (RCC_OSPICLKSOURCE_PLL2)
 
 // 4 wait states
 #define MICROPY_HW_FLASH_LATENCY            FLASH_LATENCY_2
