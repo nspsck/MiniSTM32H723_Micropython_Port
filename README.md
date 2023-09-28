@@ -4,6 +4,9 @@ This port is a WIP and needs some tweaks to the official Micropython repo in ord
 - [Required Tweaks](#required-tweaks)
 
 ## Update 09.28.2023
+Now disabled SD Card mount on boot. You can now leave the `MICROPY_HW_ENABLE_SDCARD` option on and not paying the "trying to mount a SD Card"-boot-time-expense. If you want to mount the SD Card on boot, you can still do that through `boot.py`.
+
+## Update 09.28.2023
 What works now:
 - USB Serial/Storage
 - USB HID

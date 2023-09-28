@@ -210,6 +210,7 @@ void WEACT_H723ZG_board_early_init(void);
 // #define MICROPY_HW_CAN3_RX                  (pin_D12) // valid: PD12
 
 // SD card detect switch
+#define MICROPY_HW_SDCARD_SDMMC             (1)
 #define MICROPY_HW_SDMMC1_CMD               (pin_D2)
 #define MICROPY_HW_SDMMC1_D0                (pin_C8)
 #define MICROPY_HW_SDMMC1_D1                (pin_C9)
@@ -218,6 +219,7 @@ void WEACT_H723ZG_board_early_init(void);
 #define MICROPY_HW_SDCARD_DETECT_PIN        (pin_D4)
 #define MICROPY_HW_SDCARD_DETECT_PULL       (GPIO_PULLUP)
 #define MICROPY_HW_SDCARD_DETECT_PRESENT    (GPIO_PIN_SET)
+#define MICROPY_HW_SDCARD_MOUNT_AT_BOOT     (0)
 
 // This is used to check if the camera interface has been interfered.
 // DCMI_D0 -> PC6                           pin_C6
