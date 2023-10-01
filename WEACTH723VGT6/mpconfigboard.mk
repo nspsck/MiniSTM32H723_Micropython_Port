@@ -8,11 +8,11 @@ AF_FILE = boards/stm32h723_af.csv
 
 ifeq ($(USE_MBOOT),1)
 # When using Mboot everything goes after the bootloader
-LD_FILES = boards/WEACTH723VGT6/stm32h723.ld boards/common_bl.ld
+LD_FILES = boards/WEACTH723VG/stm32h723.ld boards/common_bl.ld
 TEXT0_ADDR = 0x08020000
 else
 # When not using Mboot everything goes at the start of flash
-LD_FILES = boards/WEACTH723VGT6/stm32h723.ld boards/common_basic.ld
+LD_FILES = boards/WEACTH723VG/stm32h723.ld boards/common_basic.ld
 TEXT0_ADDR = 0x08000000
 endif
 

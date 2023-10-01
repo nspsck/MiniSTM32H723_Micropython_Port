@@ -3,6 +3,9 @@
 This port is a WIP and needs some tweaks to the official Micropython repo in order to work.
 - [Required Tweaks](#required-tweaks)
 
+## Update 10.1.2023
+Resolved some pin-layout issues. Disabled some interfaces that could interfere with each others. Which leaves 5 x UARTs, 2 x I2Cs, 3 x SPIs and one FDCAN for the user to use. Renamed forder name to keep a standard with my other ports.
+
 ## Update 09.28.2023
 Now disabled SD Card mount on boot. You can now leave the `MICROPY_HW_ENABLE_SDCARD` option on and not paying the "trying to mount a SD Card"-boot-time-expense. If you want to mount the SD Card on boot, you can still do that through `boot.py`.
 

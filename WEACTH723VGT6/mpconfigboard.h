@@ -67,7 +67,7 @@ void WEACT_H723ZG_board_early_init(void);
 
 // PLL3 120MHz
 #define MICROPY_HW_CLK_PLL3M            (5)
-#define MICROPY_HW_CLK_PLL3N            (96)
+#define MICROPY_HW_CLK_PLL3N            (48)
 #define MICROPY_HW_CLK_PLL3P            (2)
 #define MICROPY_HW_CLK_PLL3Q            (5)
 #define MICROPY_HW_CLK_PLL3R            (2)
@@ -88,20 +88,20 @@ void WEACT_H723ZG_board_early_init(void);
 #define MICROPY_HW_RCC_RNG_CLKSOURCE    (RCC_RNGCLKSOURCE_HSI48)
 #define MICROPY_HW_RCC_ADC_CLKSOURCE    (RCC_ADCCLKSOURCE_PLL3)
 #define MICROPY_HW_RCC_SDMMC_CLKSOURCE  (RCC_SDMMCCLKSOURCE_PLL)
-#define MICROPY_HW_RCC_FDCAN_CLKSOURCE  (RCC_FDCANCLKSOURCE_PLL)
+// #define MICROPY_HW_RCC_FDCAN_CLKSOURCE  (RCC_FDCANCLKSOURCE_PLL)
 // #define MICROPY_HW_RCC_SPI123_CLKSOURCE (RCC_SPI123CLKSOURCE_PLL3)
 // #define MICROPY_HW_RCC_I2C123_CLKSOURCE (RCC_I2C123CLKSOURCE_D2PCLK1)
 #define MICROPY_HW_RCC_OSPI_CLKSOURCE   (RCC_OSPICLKSOURCE_PLL2)
 
 // 4 wait states
-#define MICROPY_HW_FLASH_LATENCY            FLASH_LATENCY_2
+#define MICROPY_HW_FLASH_LATENCY            FLASH_LATENCY_4
 
 // The board has an external 32kHz crystal attached
 #define MICROPY_HW_RTC_USE_LSE              (1)
 
 // USART
-#define MICROPY_HW_UART1_TX                 (pin_B14) // valid: PA9, PB6, PB14
-#define MICROPY_HW_UART1_RX                 (pin_B15) // valid: PA10, PB7, PB15
+// #define MICROPY_HW_UART1_TX                 (pin_B14) // valid: PA9, PB6, PB14
+// #define MICROPY_HW_UART1_RX                 (pin_B15) // valid: PA10, PB7, PB15
 #define MICROPY_HW_UART2_TX                 (pin_A2) // valid: PA2 (boot), PD5
 #define MICROPY_HW_UART2_RX                 (pin_A3) // valid: PA3 (boot), PD6
 #define MICROPY_HW_UART3_TX                 (pin_D8) // valid: PB10, PC10, PD8
@@ -144,15 +144,15 @@ void WEACT_H723ZG_board_early_init(void);
 // SPI buses
 // "Audio class" SPI.
 #define MICROPY_HW_SPI1_NAME                "SPIFLASH"
-// #define MICROPY_HW_SPI1_NSS                 (SPI_NSS_SOFT) // valid: PA4 (boot), PA15
+// #define MICROPY_HW_SPI1_NSS                 (pin_D6) // valid: PA4 (boot), PA15
 #define MICROPY_HW_SPI1_SCK                 (pin_B3) // valid: PA5 (boot), PB3
 #define MICROPY_HW_SPI1_MISO                (pin_B4) // valid: PA6 (boot), PB4
 #define MICROPY_HW_SPI1_MOSI                (pin_D7) // valid: PA7 (boot), PB5, PD7
 #define MICROPY_HW_SPI2_NAME                "SPI2"
-#define MICROPY_HW_SPI2_NSS                 (pin_A11) // valid: PA11, PB12, PB4
-#define MICROPY_HW_SPI2_SCK                 (pin_A9) // valid: PA9, PA12, PB10, PB13, PD3
-#define MICROPY_HW_SPI2_MISO                (pin_C2) // valid: PB14, PC2
-#define MICROPY_HW_SPI2_MOSI                (pin_C3) // valid: PB15, PC1, PC3
+#define MICROPY_HW_SPI2_NSS                 (pin_B12) // valid: PA11, PB12, PB4
+#define MICROPY_HW_SPI2_SCK                 (pin_B13) // valid: PA9, PA12, PB10, PB13, PD3
+#define MICROPY_HW_SPI2_MISO                (pin_B14) // valid: PB14, PC2
+#define MICROPY_HW_SPI2_MOSI                (pin_B15) // valid: PB15, PC1, PC3
 // Disabled because: PB4 is taken for SPIFLASH, PC11 is taken by SDMMC1. 
 // #define MICROPY_HW_SPI3_NAME                "SPI3"
 // #define MICROPY_HW_SPI3_NSS                 (pin_A15) // valid: PA4, PA15 (boot)
@@ -180,8 +180,8 @@ void WEACT_H723ZG_board_early_init(void);
 
 // USRSW is pulled low. Pressing the button makes the input go high.
 #define MICROPY_HW_USRSW_PIN                (pin_C13)
-#define MICROPY_HW_USRSW_PULL               (GPIO_NOPULL)
-#define MICROPY_HW_USRSW_EXTI_MODE          (GPIO_MODE_IT_FALLING)
+#define MICROPY_HW_USRSW_PULL               (GPIO_PULLDOWN)
+#define MICROPY_HW_USRSW_EXTI_MODE          (GPIO_MODE_IT_RISING)
 #define MICROPY_HW_USRSW_PRESSED            (1)
 
 // LEDs
@@ -201,9 +201,9 @@ void WEACT_H723ZG_board_early_init(void);
 #define MICROPY_HW_CAN1_TX                  (pin_D1) // valid: PA12, PD1, PB9
 #define MICROPY_HW_CAN1_RX                  (pin_D0) // valid: PA11, PD0, PB8
 // FDCAN2 and FDCAN3 does not support TT-FDCAN.
-#define MICROPY_HW_CAN2_NAME                "FDCAN2"
-#define MICROPY_HW_CAN2_TX                  (pin_B13) // valid: PB6, PB13
-#define MICROPY_HW_CAN2_RX                  (pin_B12) // valid: PB5, PB12
+// #define MICROPY_HW_CAN2_NAME                "FDCAN2"
+// #define MICROPY_HW_CAN2_TX                  (pin_B13) // valid: PB6, PB13
+// #define MICROPY_HW_CAN2_RX                  (pin_B12) // valid: PB5, PB12
 // Disabled because: PD12, PD13 is taken by OSPIFLASH
 // #define MICROPY_HW_CAN3_NAME                "FDCAN3"
 // #define MICROPY_HW_CAN3_TX                  (pin_D13) // valid: PD13
