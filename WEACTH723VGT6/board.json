@@ -1,8 +1,0 @@
-{
-    "deploy": [
-        "../deploy.md"
-    ],
-    "mcu": "stm32h7",
-    "product": "WeAct Studio MiniSTM32H7xx",
-    "vendor": "WeAct Studio"
-}
