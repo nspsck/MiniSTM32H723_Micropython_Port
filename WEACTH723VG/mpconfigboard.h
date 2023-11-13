@@ -143,12 +143,12 @@ void WEACT_H723ZG_board_early_init(void);
 
 // SPI buses
 // "Audio class" SPI.
-#define MICROPY_HW_SPI1_NAME                "SPIFLASH"
+// #define MICROPY_HW_SPI1_NAME                "SPIFLASH"
 // #define MICROPY_HW_SPI1_NSS                 (pin_D6) // valid: PA4 (boot), PA15
 #define MICROPY_HW_SPI1_SCK                 (pin_B3) // valid: PA5 (boot), PB3
 #define MICROPY_HW_SPI1_MISO                (pin_B4) // valid: PA6 (boot), PB4
 #define MICROPY_HW_SPI1_MOSI                (pin_D7) // valid: PA7 (boot), PB5, PD7
-#define MICROPY_HW_SPI2_NAME                "SPI2"
+// #define MICROPY_HW_SPI2_NAME                "SPI2"
 #define MICROPY_HW_SPI2_NSS                 (pin_B12) // valid: PA11, PB12, PB4
 #define MICROPY_HW_SPI2_SCK                 (pin_B13) // valid: PA9, PA12, PB10, PB13, PD3
 #define MICROPY_HW_SPI2_MISO                (pin_B14) // valid: PB14, PC2
@@ -166,7 +166,7 @@ void WEACT_H723ZG_board_early_init(void);
 // #define MICROPY_HW_SPI6_MISO                (pin_A6) // valid: PA6, PB4
 // #define MICROPY_HW_SPI6_MOSI                (pin_A7) // valid: PA7, PB5
 // "Normal" SPI.
-#define MICROPY_HW_SPI4_NAME                "SPILCD"
+// #define MICROPY_HW_SPI4_NAME                "SPILCD"
 #define MICROPY_HW_SPI4_NSS                 (pin_E11) // valid: PE4, PE11
 #define MICROPY_HW_SPI4_SCK                 (pin_E12) // valid: PE2, PE12
 #define MICROPY_HW_SPI4_MISO                (pin_E13) // valid: PE5, PE13
@@ -197,7 +197,7 @@ void WEACT_H723ZG_board_early_init(void);
 
 // FDCAN bus
 // FDCAN1 supports TT-FDCAN (time triggered CAN).
-#define MICROPY_HW_CAN1_NAME                "FDCAN1"
+// #define MICROPY_HW_CAN1_NAME                "FDCAN1"
 #define MICROPY_HW_CAN1_TX                  (pin_D1) // valid: PA12, PD1, PB9
 #define MICROPY_HW_CAN1_RX                  (pin_D0) // valid: PA11, PD0, PB8
 // FDCAN2 and FDCAN3 does not support TT-FDCAN.

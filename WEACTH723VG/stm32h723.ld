@@ -10,8 +10,6 @@ MEMORY
     FLASH_FS (r)    : ORIGIN = 0x080c0000, LENGTH = 256K    /* sectors 6-7 */
     DTCM (xrw)      : ORIGIN = 0x20000000, LENGTH = 128K    /* Used for FS storage cache */
     RAM (xrw)       : ORIGIN = 0x24000000, LENGTH = 320K    /* 128K + 192K RAM which is shared between AXI SRAM and ITCM */
-    RAM_SRAM1 (xrw) : ORIGIN = 0x30000000, LENGTH = 16K     /* SRAM1 on D2*/
-    RAM_SRAM2 (xrw) : ORIGIN = 0x30004000, LENGTH = 16K     /* SRAM2 on D2*/
     RAM_D2 (xrw)    : ORIGIN = 0x30000000, LENGTH = 32K     /* Entire D2 Domain*/
     RAM_SRAM4 (xrw) : ORIGIN = 0x38000000, LENGTH = 16K     /* SRAM4 on D3*/
 }
@@ -43,7 +41,7 @@ _micropy_hw_internal_flash_storage_end = ORIGIN(FLASH_FS) + LENGTH(FLASH_FS);
 SECTIONS
 {
     .eth_buffers (NOLOAD) : {
-        . = ABSOLUTE(0x30000000);
+        . = ABSOLUTE(0x38000000);
         *eth.o*(.bss.eth_dma)
-    } >RAM_D2
+    } >RAM_SRAM4
 }
