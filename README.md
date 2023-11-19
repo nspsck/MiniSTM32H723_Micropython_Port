@@ -3,6 +3,9 @@
 This port is a WIP and needs some tweaks to the official Micropython repo in order to work.
 - [Required Tweaks](#required-tweaks)
 
+## Update 19.11.2023
+Minor changes, added more building options.
+
 ## Update 10.1.2023
 Resolved some pin-layout issues. Disabled some interfaces that could interfere with each others. Which leaves 5 x UARTs, 2 x I2Cs, 3 x SPIs and one FDCAN for the user to use. Renamed forder name to keep a standard with my other ports.
 
