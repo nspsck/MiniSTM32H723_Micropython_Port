@@ -1,6 +1,11 @@
 #include "storage.h"
 #include "octospi.h"
 
+#if MICROPY_VERSION >= MICROPY_MAKE_VERSION(1, 23, 0) // STATIC should be replaced with static.
+#undef STATIC   // This may become irrelevant later on.
+#define STATIC static
+#endif
+
 #if MICROPY_HW_SPIFLASH_ENABLE_CACHE
 // Shared cache for first and second SPI block devices
 STATIC mp_spiflash_cache_t spi_bdev_cache;
