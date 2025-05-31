@@ -5,8 +5,6 @@
 #ifndef MICROPY_INCLUDED_STM32H7XX_HAL_CONF_H
 #define MICROPY_INCLUDED_STM32H7XX_HAL_CONF_H
 
-#include "boards/stm32h7xx_hal_conf_base.h"
-
 // Oscillator values in Hz
 #ifndef HSE_VALUE
 #define HSE_VALUE (25000000)
@@ -21,5 +19,7 @@
 // Oscillator timeouts in ms
 #define HSE_STARTUP_TIMEOUT (5000)
 #define LSE_STARTUP_TIMEOUT (5000)
+
+#include "boards/stm32h7xx_hal_conf_base.h"
 
 #endif // MICROPY_INCLUDED_STM32H7XX_HAL_CONF_H
